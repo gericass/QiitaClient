@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import org.w3c.dom.Text
 import sample.qiitaclient.R
+import sample.qiitaclient.bindView
 import sample.qiitaclient.model.Article
 import java.security.KeyStore
 
@@ -27,17 +28,14 @@ class ArticleView : FrameLayout {
                 attrs: AttributeSet?,
                 defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
-    var profileImageView: ImageView? = null
+    val profileImageView: ImageView by bindView<ImageView>(R.id.profile_image_view)
 
-    var titleTextView: TextView? = null
+    val titleTextView: TextView? by bindView<TextView>(R.id.title_text_view)
 
-    var userNameTextView: TextView? = null
+    val userNameTextView: TextView? by bindView<TextView>(R.id.user_name_text_view)
 
     init {
         LayoutInflater.from(context).inflate(R.layout.view_article, this)
-        profileImageView = findViewById<ImageView>(R.id.profile_image_view)
-        titleTextView = findViewById<TextView>(R.id.title_text_view)
-        userNameTextView = findViewById<TextView>(R.id.user_name_text_view)
     }
 
     fun setArticle(article: Article) {

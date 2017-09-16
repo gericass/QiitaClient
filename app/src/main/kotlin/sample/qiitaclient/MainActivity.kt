@@ -2,8 +2,7 @@ package sample.qiitaclient
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import sample.qiitaclient.model.Article
-import sample.qiitaclient.model.User
+import sample.qiitaclient.model.*
 
 import sample.qiitaclient.view.ArticleView
 
