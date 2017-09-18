@@ -28,12 +28,16 @@ class MainActivity : RxAppCompatActivity() {
         val searchButton = findViewById(R.id.search_button) as Button
 
         val listAdapter = ArticleListAdapter(applicationContext)
+
         listView.adapter = listAdapter
+
         listView.setOnItemClickListener { adapterView, view, position, id ->
             val article = listAdapter.articles[position]
             ArticleActivity.intent(this, article).let { startActivity(it) }
         }
 
+
+        // API周り
         val gson = GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create()
@@ -42,8 +46,10 @@ class MainActivity : RxAppCompatActivity() {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build()
+
         val articleClient = retrofit.create(ArticleClient::class.java)
 
+        // 検索機能
         searchButton.setOnClickListener {
             progressBar.visibility = View.VISIBLE
 
